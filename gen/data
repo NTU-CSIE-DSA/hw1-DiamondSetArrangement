@@ -1,0 +1,164 @@
+@testset sample1
+manual 0-01.in
+
+@testset sample2
+manual 0-02.in
+
+@testset sample3
+manual 0-03.in
+
+@testset 1_public
+gen3 1000 10 100000 7 public
+gen1 500 10 100000 7 public
+gen1 1000 5 100000 7 public
+gen1 1000 10 100000 7 public
+gen2 1000 10 100000 7 public
+
+@testset 1_private
+gen3 1000 10 100000 7 private_1
+gen1 500 10 100000 7 private_1
+gen1 1000 5 100000 7 private_1
+gen1 1000 10 100000 7 private_1
+gen2 1000 10 100000 7 private_1
+gen3 1000 10 100000 7 private_2
+gen1 500 10 100000 7 private_2
+gen1 1000 5 100000 7 private_2
+gen1 1000 10 100000 7 private_2
+gen2 1000 10 100000 7 private_2
+
+@testset 1
+@include 1_public
+@include 1_private
+
+@testset 2_public
+@include 1_public
+gen3 10000 1000 100000000 7 public
+gen1 5000 1000 100000000 7 public
+gen1 10000 500 100000000 7 public
+gen1 10000 1000 100000000 7 public
+gen2 10000 1000 100000000 7 public
+
+@testset 2_private
+@include 1_private
+gen3 10000 1000 100000000 7 private_1
+gen1 5000 1000 100000000 7 private_1
+gen1 10000 500 100000000 7 private_1
+gen1 10000 1000 100000000 7 private_1
+gen2 10000 1000 100000000 7 private_1
+gen3 10000 1000 100000000 7 private_2
+gen1 5000 1000 100000000 7 private_2
+gen1 10000 500 100000000 7 private_2
+gen1 10000 1000 100000000 7 private_2
+gen2 10000 1000 100000000 7 private_2
+
+@testset 2
+@include 2_public
+@include 2_private
+
+@testset 3_public
+gen3 1000000 1000000 1000000000000 3 public
+gen1 500000 1000000 1000000000000 3 public
+gen1 1000000 500000 1000000000000 3 public
+gen1 1000000 1000000 1000000000000 3 public
+gen2 1000000 1000000 1000000000000 3 public
+
+@testset 3_private
+gen3 1000000 1000000 1000000000000 3 private_1
+gen1 500000 1000000 1000000000000 3 private_1
+gen1 1000000 500000 1000000000000 3 private_1
+gen1 1000000 1000000 1000000000000 3 private_1
+gen2 1000000 1000000 1000000000000 3 private_1
+gen3 1000000 1000000 1000000000000 3 private_2
+gen1 500000 1000000 1000000000000 3 private_2
+gen1 1000000 500000 1000000000000 3 private_2
+gen1 1000000 1000000 1000000000000 3 private_2
+gen2 1000000 1000000 1000000000000 3 private_2
+
+@testset 3
+@include 3_public
+@include 3_private
+
+@testset 4_public
+gen3 1000000 1000000 1000000000000 5 public
+gen1 500000 1000000 1000000000000 5 public
+gen1 1000000 500000 1000000000000 5 public
+gen1 1000000 1000000 1000000000000 5 public
+gen2 1000000 1000000 1000000000000 5 public
+
+@testset 4_private
+gen3 1000000 1000000 1000000000000 5 private_1
+gen1 500000 1000000 1000000000000 5 private_1
+gen1 1000000 500000 1000000000000 5 private_1
+gen1 1000000 1000000 1000000000000 5 private_1
+gen2 1000000 1000000 1000000000000 5 private_1
+gen3 1000000 1000000 1000000000000 5 private_2
+gen1 500000 1000000 1000000000000 5 private_2
+gen1 1000000 500000 1000000000000 5 private_2
+gen1 1000000 1000000 1000000000000 5 private_2
+gen2 1000000 1000000 1000000000000 5 private_2
+
+@testset 4
+@include 4_public
+@include 4_private
+
+@testset 5_public
+@include 1_public
+@include 2_public
+@include 3_public
+@include 4_public
+gen3 1000000 1000000 1000000000000 7 public
+gen1 500000 1000000 1000000000000 7 public
+gen1 1000000 500000 1000000000000 7 public
+gen1 1000000 1000000 1000000000000 7 public
+gen2 1000000 1000000 1000000000000 7 public
+
+@testset 5_private
+@include 1_private
+@include 2_private
+@include 3_private
+@include 4_private
+gen3 1000000 1000000 1000000000000 7 private_1
+gen1 500000 1000000 1000000000000 7 private_1
+gen1 1000000 500000 1000000000000 7 private_1
+gen1 1000000 1000000 1000000000000 7 private_1
+gen2 1000000 1000000 1000000000000 7 private_1
+gen3 1000000 1000000 1000000000000 7 private_2
+gen1 500000 1000000 1000000000000 7 private_2
+gen1 1000000 500000 1000000000000 7 private_2
+gen1 1000000 1000000 1000000000000 7 private_2
+gen2 1000000 1000000 1000000000000 7 private_2
+
+@testset 5
+@include 5_public
+@include 5_private
+
+@subtask samples
+@include sample1
+@include sample2
+@include sample3
+
+@subtask subtask1
+@include sample1
+@include sample2
+@include sample3
+@include 1
+
+@subtask subtask2
+@include sample1
+@include sample2
+@include sample3
+@include 2
+
+@subtask subtask3
+@include sample2
+@include 3
+
+@subtask subtask4
+@include sample3
+@include 4
+
+@subtask subtask5
+@include sample1
+@include sample2
+@include sample3
+@include 5

@@ -1,0 +1,38 @@
+{
+    "AC.cpp": { "verdict": "model_solution" },
+    "subtask_1.cpp": {
+		"verdict": "runtime_error",
+		"except": {
+            "samples": "correct", 
+            "subtask1": "correct"
+        }
+	},
+    "subtask_2.cpp": {
+		"verdict": "runtime_error",
+		"except": {
+            "samples": "correct", 
+            "subtask1": "correct",
+            "subtask2": "correct"
+        }
+	},
+    "subtask_2_sol_from_1.cpp": {
+		"verdict": "runtime_error",
+		"except": {
+            "samples": "correct", 
+            "subtask1": "correct",
+            "subtask2": "time_limit"
+        }
+	},
+    "subtask_3.cpp": {
+		"verdict": "incorrect",
+		"except": {
+            "subtask3": "correct"
+        }
+	},
+    "subtask_4.cpp": {
+		"verdict": "incorrect",
+		"except": {
+            "subtask4": "correct"
+        }
+	}
+}
