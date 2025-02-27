@@ -1,4 +1,3 @@
-#include <cstdint>
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -36,16 +35,17 @@ static inline int64_t op1(
     removed += stack[(*st_size) - 1].num;
     (*st_size)--;
   }
-  int64_t l = -1, r = stack[(*st_size) - 1].num + 1;
-  while (r - l > 1) {
-    int64_t mid = (l + r) >> 1;
-    if (get_real_value(stack[(*st_size) - 1], mid, op3_count, M) >= v) {
-      l = mid;
-    } else {
-      r = mid;
-    }
-  }
   if (*st_size > 0) {
+    int64_t l = -1, r = stack[(*st_size) - 1].num + 1;
+    while (r - l > 1) {
+      int64_t mid = (l + r) >> 1;
+      assert((*st_size) > 0);
+      if (get_real_value(stack[(*st_size) - 1], mid, op3_count, M) >= v) {
+        l = mid;
+      } else {
+        r = mid;
+      }
+    }
     removed += stack[(*st_size) - 1].num - l;
     stack[(*st_size) - 1].num -= stack[(*st_size) - 1].num - l;
   }
@@ -69,13 +69,15 @@ static inline int64_t find_greater_equal(
   int l = -1, r = *st_size;
   while (r - l > 1) {
     int mid = (l + r) >> 1;
+    assert(mid != -1);
     if (get_real_value(stack[mid], stack[mid].num, op3_count, M) >= p) {
       l = mid;
     } else {
       r = mid;
     }
   }
-  if (l == *st_size - 1) {
+  if (l == (*st_size) - 1) {
+    if (l == -1) return 0; 
     return stack[l].prefix_total_element + stack[l].num;
   } else {
     int64_t remain_op3 = op3_count - stack[r].prev_op3;
@@ -111,7 +113,7 @@ int main(void) {
 
   int64_t op3_count = 0;
   size_t st_size = 0;
-  Diamond *stack = (Diamond*) malloc(sizeof(Diamond) * 1000000);
+  Diamond *stack = (Diamond*) malloc(sizeof(Diamond) * 1000005);
 
   for (int i = 0; i < T; ++i) {
     int operation;
