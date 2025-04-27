@@ -61,7 +61,7 @@ Additionally, maintain a **global counter**:
 Suppose we want the **$k^{th}$ diamond**.  
 The actual value is calculated by:
 
-$\text{value} = \text{init_value} + (\text{accu_op3} - \text{prefix_op3}) \times (M - (\text{elements_before_group} + \text{position_in_group}) + 1)$
+`value = init_value + (accu_op3 - prefix_op3) * (M - (elements_before_group + position_in_group) + 1)`
 
 Where:
 - `elements_before_group` = number of diamonds inserted before this group.
